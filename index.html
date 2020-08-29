@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>API Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="user-container"></div>
+    <div id="load-user-page-menu">
+      <p>Your saved user pages:</p>
+      <select name="select-user-page" id="select-user-page">
+      </select>
+      <button>Load User Page</button>
+    </div>
+    <div class="quote-container"></div>
+    <div class="content-container">
+      <div class="pokemon-container"></div>
+      <div class="lorem-ipsum-container"></div>
+    </div>
+    <div class="friends">
+      <h4>Friends</h4>
+      <div class="friends-container"></div>
+    </div>
+    <div class="buttons">
+      <button>Load User Data
+      </button>
+      <button disabled>Display User</button>
+      <button disabled>Save User Page</button>
+    </div>
+  </div>
+  </div>
+  <script id="user-info-template" type="text/x-handlebars-template">
+        <img id="profile-pic" src="{{data.imageURL}}">
+      <div class="user-info">
+        <div>{{data.firstName}} {{data.lastName}}</div>
+        <div>{{data.cityState}}</div>
+      </div>
+    </script>
+  <script id="friends-template" type="text/x-handlebars-template">
+      {{#each data}}
+        <p>{{firstName}} {{lastName}}</p>
+      {{/each}}
+    </script>
+  <script id="quote-template" type="text/x-handlebars-template">
+        <p>{{data.title}}</p>
+        <span>{{data.text}}</span><br><span>- {{data.by}}</span>
+    </script>
+  <script id="pokemon-template" type="text/x-handlebars-template">
+    <img id="pokemon-image" src="{{data.imageURL}}">
+    <div id="pokemon-text">Favorite Pokemon: {{data.pokeName}}</div>
+    </script>
+  <script id="lorem-ipsum-template" type="text/x-handlebars-template">
+        <p class=".lorem-hipsum-text">About me:<br>
+          {{data.text}}
+        </p>
+    </script>
+  <script id="user-page-option-template" type="text/x-handlebars-template">
+        {{#each data}}
+        <option value="{{_userInfo.firstName}} {{_userInfo.lastName}}">
+          {{_userInfo.firstName}} {{_userInfo.lastName}}</option>
+        {{/each}}
+    </script>
+ <script id="loading-state-btn-template" type="text/x-handlebars-template">
+        <span>{{data.text}}   </span><i class="fa fa-spinner fa-spin"></i>
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="APIManager.js"></script>
+  <script src="Renderer.js"></script>
+  <script src="LSManager.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
